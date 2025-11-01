@@ -25,6 +25,9 @@ class Animal:
     def stop_eating(self):
         print("To zwierzę przestało jeść", self.food)
 
+    def make_sound(self):
+        print("To zwierzę wydaje głos")
+
 class Bird(Animal):
     def __init__(self, weight, age, can_fly):
         super().__init__(weight, age)
@@ -36,6 +39,9 @@ class Bird(Animal):
             print("To ptak, który potrafi latać")
         else:
             print("To ptak, który nie potrafi latać")
+
+    def make_sound(self):
+        print("Ten ptak śpiewa")
 
 class Mammal(Animal):
     def __init__(self, weight, age, can_swim):
@@ -49,6 +55,10 @@ class Mammal(Animal):
        else:
             print("To ssak, który nie potrafi pływać")
 
+    def make_sound(self):
+        print("Ten ssak daje głos")
+
+
 class Dog(Mammal):
     def __init__(self, weight, age, can_swim, breed): #rbreed - rasa
         super().__init__(weight, age, can_swim)
@@ -58,51 +68,26 @@ class Dog(Mammal):
     def fetch(self): #fetch - aportować
         print("Ten pies aportuje")
 
+    def make_sound(self):
+        print("Ten pies szczeka")
+
+
 class Cat(Mammal):
     def __init__(self, weight, age, can_swim, breed): #breed - rasa
         super().__init__(weight, age, can_swim)
 
         self.breed = breed
 
-
-cat = Cat(8, 30, False, "Perski")
-print(cat.weight, cat.age, cat.can_swim, cat.breed)
-cat.eat("ryba")
-cat.swim()
+    def make_sound(self):
+        print("Ten kot miauczy")
 
 
+animal = Animal(10, 5)
+bird = Bird(2, 1, True)
+mammal = Mammal(50, 7, False)
+dog = Dog(20, 4, True, "Labrador")
+cat = Cat(5, 3, False, "Perski")
 
-
-dog = Dog(10,46,True, "Buldog")
-print(dog.weight, dog.age, dog.can_swim, dog.breed)
-dog.swim()
-dog.eat("kość")
-dog.fetch()
-
-
-bird = Bird(5, 45, True)
-print(bird.weight, bird.age, bird.can_fly)
-bird.eat("chleb")
-
-mammal = Mammal(5, 45, True)
-print(mammal.weight, mammal.age, mammal.can_swim)
-mammal.eat("mięso")
-
-# dog = Animal("Pies", 14, 5)
-# print(dog.weight)
-# dog.eat("rybę")
-# print(dog.weight)
-#
-# cat = Animal("Kot", 12, 3)
-# cat.wake_up()
-#
-# print("Ilość zwierząt:", Animal.counter)
-# print("Ilość zwierząt:", Animal.animals_list)
-# for index, animal in enumerate(Animal.animals_list):
-#     nr = index + 1
-#     print('Zwierzę nr',nr)
-#     print('Dane o zwierzęciu:')
-#     print('gatunek',animal.species)
-#     print('waga',animal.weight)
-#     print('wiek',animal.age)
-#     print('---')
+for animal in animal.animals_list:
+    animal.make_sound()
+    print("------------")
